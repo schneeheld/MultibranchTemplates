@@ -3,19 +3,19 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    openjdk-17: "true"
+    openjdk-8: "true"
   annotations:
 spec:
   containers:
-  - name: maven-jdk17
-    image: maven:3.8.5-openjdk-17
+  - name: jdk8
+    image: openjdk:8u131-alpine
     command:
     - cat
     tty: true
 """
 ) {
     node(POD_LABEL) {
-      container('maven-jdk17') {
+      container('jdk8') {
         sh "java -version"
       }
     }
